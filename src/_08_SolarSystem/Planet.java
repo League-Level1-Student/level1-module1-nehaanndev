@@ -8,14 +8,20 @@ import java.util.Random;
 public class Planet {
     /*
      * Member variables
+     * 
+     * 
      */
+	
+	int size;
+	String color;
+	
     int x, y, width, height;
     int diameter;
     
     public Planet(int diameterPixels) {
         this.diameter = diameterPixels;
     }
-
+    
     public void draw(Graphics g, int numDays) {
         /*
          * Local variables

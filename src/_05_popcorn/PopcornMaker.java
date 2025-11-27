@@ -21,6 +21,8 @@ public class PopcornMaker {
 		
 		micro.putInMicrowave(bag);
 		micro.setTime(amtTime);
-	}
+		micro.startMicrowave();
 
+
+	}
 }
