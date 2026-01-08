@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Planet {
-    /*
-     * Member variables
-     * 
-     * 
-     */
+    
 	
-	int size;
-	String color;
+	double orbitP;
+	String planetColor;
+	double disFromS;
 	
     int x, y, width, height;
     int diameter;
+ 
     
-    public Planet(int diameterPixels) {
-        this.diameter = diameterPixels;
-    }
-    
-    public void draw(Graphics g, int numDays) {
+    public Planet(int diameterPixels, String colors, double orbitPeriod, double distanceFromSun)  {
+    	this.planetColor = colors;
+    	this.orbitP = orbitPeriod;
+    	this.disFromS = distanceFromSun;
+    	}
+
+	public void draw(Graphics g, int numDays) {
         /*
          * Local variables
          * Reassign or remove these after creating the correct member variables
          */
-        int avgDistFromSun = 1496 / 10;     // You can choose a different scaling than divided by 10
-        int orbitalPeriod = 365;
-        Color color = Color.BLUE;
+        int avgDistFromSun = (int) (disFromS / 10);     // You can choose a different scaling than divided by 10
+        int orbitalPeriod = (int) orbitP;
+        Color color = #0000FF";
         
         /*
          * Update position
