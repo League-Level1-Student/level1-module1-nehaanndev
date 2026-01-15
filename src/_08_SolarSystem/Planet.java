@@ -5,21 +5,23 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Planet {
     
 	
 	double orbitP;
-	String planetColor;
+	Color planetColor;
 	double disFromS;
 	
     int x, y, width, height;
     int diameter;
  
     
-    public Planet(int diameterPixels, String colors, double orbitPeriod, double distanceFromSun)  {
+    public Planet(int diameterPixels, Color colors, double orbitPeriod, double distanceFromSun)  {
     	this.planetColor = colors;
     	this.orbitP = orbitPeriod;
-    	this.disFromS = distanceFromSun;
+    	this.disFromS = Math.log10(distanceFromSun);
+    	this.diameter = (int) Math.log10(diameterPixels);
     	}
 
 	public void draw(Graphics g, int numDays) {
@@ -27,10 +29,12 @@ public class Planet {
          * Local variables
          * Reassign or remove these after creating the correct member variables
          */
-        int avgDistFromSun = (int) (disFromS / 10);     // You can choose a different scaling than divided by 10
+        int avgDistFromSun = (int) (disFromS * 30);     // You can choose a different scaling than divided by 10
         int orbitalPeriod = (int) orbitP;
-        Color color = #0000FF";
-        
+        Color color = planetColor;
+        System.out.println("X: "+ x + " Y: "+ y);
+        System.out.println("Color: "+ color);
+        System.out.println("Diameter: "+ diameter);
         /*
          * Update position
          */
@@ -41,7 +45,7 @@ public class Planet {
         /*
          * Draw orbit
          */
-        g.setColor(color);
+        g.setColor(Color.WHITE);
         g.drawOval(SolarSystem.CENTER_X - avgDistFromSun,
                    SolarSystem.CENTER_Y - avgDistFromSun,
                    2*avgDistFromSun, 2*avgDistFromSun);
@@ -83,8 +87,8 @@ public class Planet {
         public Moon() {
             Random rand = new Random();
             this.moonColor = Color.WHITE;
-            this.moonDiameter = 10;
-            this.distPlanetToMoon = (diameter/2) + 10;
+            this.moonDiameter = 5;
+            this.distPlanetToMoon = (diameter/20) + 10;
             this.moonDaysToOrbit = 50;                 // arbitrarily chosen
             this.daysOffset = rand.nextInt(365);
         }
